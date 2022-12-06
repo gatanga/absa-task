@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_a_number">Enter a number</string>
+    <string name="regenerate_number">Regenerate number</string>
+    <string name="search">Search</string>
+    <string name="choose_month_and_day">Choose month and day</string>
+    <string name="choose_a_date_and_month_on_the_right_button">Choose a date and month on the right button</string>
+    <string name="choose_day_month_prompt_text">Select a day and a month to get a fact</string>
+    <string name="month_day_values">%1$s/%2$s</string>
+</resources>

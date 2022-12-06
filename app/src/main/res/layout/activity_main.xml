@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_height"
+        android:backgroundTint="@color/purple_200"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabContentStart="@dimen/tab_content_start"
+        app:tabGravity="fill"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@color/white"
+        app:tabIndicatorFullWidth="false"
+        app:tabMode="fixed"
+        app:tabPaddingEnd="@dimen/padding_medium"
+        app:tabPaddingStart="@dimen/padding_medium"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabTextAppearance="?attr/textAppearanceSubtitle1"
+        app:tabTextColor="@android:color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
