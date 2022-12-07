@@ -1,30 +1,31 @@
 package za.co.absa.absatask.ui.trivia
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_trivia.*
-import kotlinx.android.synthetic.main.fragment_trivia.view.*
-import za.co.absa.absatask.R
+import za.co.absa.absatask.databinding.FragmentTriviaBinding
 import za.co.absa.absatask.ui.base.BaseFactFragment
 
 @AndroidEntryPoint
 class TriviaFragment : BaseFactFragment() {
 
     private val viewModel: TriviaViewModel by viewModels()
+    private lateinit var binding: FragmentTriviaBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpObservers(viewModel = viewModel)
-        setUpListeners(button = btnSearch, view = view)
-        etNumberInput.setText(generateRandomNumber())
+        setUpListeners(button = binding.btnSearch)
+        binding.etNumberInput.setText(generateRandomNumber())
         addRandomNumberGenerationListeners()
     }
 
     private fun addRandomNumberGenerationListeners() {
-        btnGenerateNumber.setOnClickListener {
-            etNumberInput.setText(generateRandomNumber())
+        binding.btnGenerateNumber.setOnClickListener {
+            binding.etNumberInput.setText(generateRandomNumber())
         }
     }
 
@@ -32,14 +33,17 @@ class TriviaFragment : BaseFactFragment() {
     private fun generateRandomNumber() =
         (0..MAX_RANDOM_VALUE).random().toString()
 
-    override fun getLayoutId() = R.layout.fragment_trivia
+    override fun createBinding(inflater: LayoutInflater, container: ViewGroup?): View {
+        binding = FragmentTriviaBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-    override fun onSearchClicked(view: View) {
-        viewModel.getTriviaFact(number = view.etNumberInput.text.toString())
+    override fun onSearchClicked() {
+        viewModel.getTriviaFact(number = binding.etNumberInput.text.toString())
     }
 
     override fun displayFactText(fact: String) {
-        tvSearchResult.text = fact
+        binding.tvSearchResult.text = fact
     }
 
     override fun showHideLoading() {

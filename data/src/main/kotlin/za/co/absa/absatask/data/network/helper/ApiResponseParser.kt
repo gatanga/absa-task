@@ -39,6 +39,6 @@ private fun convertErrorBody(throwable: HttpException): String? {
     return try {
         throwable.response()?.message()
     } catch (exception: Exception) {
-        null
+        exception.message
     }
 }

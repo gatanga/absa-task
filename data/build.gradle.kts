@@ -3,6 +3,7 @@ plugins {
     id(BuildPlugins.androidKotlinPlugin)
     kotlin(BuildPlugins.kapt)
     id(BuildPlugins.hiltAndroidPlugin)
+    id(BuildPlugins.androidJUnit5) version "1.8.2.1"
 }
 
 android {
@@ -41,6 +42,10 @@ android {
             java.srcDir("src/main/kotlin")
         }
     }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -56,9 +61,15 @@ dependencies {
     implementation(NetworkLibs.loggingInterceptor)
     implementation(SerializationLibs.kotlinSerialization)
     testImplementation(UnitTestLibs.jUnit5Api)
+    testImplementation(UnitTestLibs.jUnit5Params)
+    testRuntimeOnly(UnitTestLibs.jUnit5Engine)
     testImplementation(UnitTestLibs.androidJUnit)
+    testImplementation(UnitTestLibs.mockitoCore)
+    testImplementation(UnitTestLibs.mockitoCoreInline)
+    testImplementation(UnitTestLibs.mockitoKotlin)
     androidTestImplementation(UiTestsLibs.espressoCore)
 }
 kapt {
     correctErrorTypes = true
 }
+

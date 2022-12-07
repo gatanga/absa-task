@@ -15,7 +15,6 @@ object AndroidSdk {
     const val versionCode = 1
     const val versionName = "1.0"
     const val instrumentationRunnerClassName = "androidx.test.runner.AndroidJUnitRunner"
-    const val useSupportLibraryWithVectorDrawables = true
 }
 
 object Proguard {
@@ -33,10 +32,7 @@ object BuildPlugins {
 
     const val androidVersion = "7.3.1"
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.gradleVersion}"
-    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     const val mainKotlinAndroidExtensions = "org.jetbrains.kotlin.android.extensions"
-    const val kotlinAndroidExtensions = "kotlin-android-extensions"
-    const val kotlinAndroid = "kotlin-android"
     const val androidApplicationPlugin = "com.android.application"
     const val androidLibraryPlugin = "com.android.library"
     const val androidKotlinPlugin = "org.jetbrains.kotlin.android"
@@ -44,6 +40,7 @@ object BuildPlugins {
     const val kotlinJvm = "org.jetbrains.kotlin.jvm"
     const val hiltAndroidPlugin = "com.google.dagger.hilt.android"
     const val kapt = "kapt"
+    const val androidJUnit5 = "de.mannodermaus.android-junit5"
 }
 
 object AndroidLibs {
@@ -61,8 +58,6 @@ object AndroidLibs {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
-    const val cardView = "androidx.cardview:cardview:${Versions.cardView}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
@@ -73,23 +68,8 @@ object AndroidLibs {
 }
 
 object InjectionLibs {
-    private object Versions {
-        const val javax = "1"
-    }
-
-    const val javax = "javax.inject:javax.inject:${Versions.javax}"
     const val hiltAndroid = "com.google.dagger:hilt-android:$hiltAndroidVersion"
     const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:$hiltAndroidVersion"
-}
-
-object CoroutinesLibs {
-    private object Versions {
-        const val coroutines = "1.6.4"
-    }
-
-    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
-    const val coroutinesCore =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
 }
 
 object SerializationLibs {
@@ -125,17 +105,14 @@ object UnitTestLibs {
     private object Versions {
         const val jUnit5 = "5.9.1"
         const val androidJUnit = "1.1.4"
-        const val mockWebServer = "5.0.0-alpha.10"
-        const val hiltAndroidTesting = "2.44.2"
         const val mockitoCore = "4.9.0"
         const val mockitoKotlin = "4.1.0"
     }
 
     const val jUnit5Api = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5}"
+    const val jUnit5Engine = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5}"
+    const val jUnit5Params = "org.junit.jupiter:junit-jupiter-params:${Versions.jUnit5}"
     const val androidJUnit = "androidx.test.ext:junit:${Versions.androidJUnit}"
-    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
-    const val hiltAndroidTesting =
-        "com.google.dagger:hilt-android-testing:${Versions.hiltAndroidTesting}"
     const val mockitoCore = "org.mockito:mockito-core:${Versions.mockitoCore}"
     const val mockitoCoreInline = "org.mockito:mockito-inline:${Versions.mockitoCore}"
     const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlin}"

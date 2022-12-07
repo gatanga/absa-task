@@ -16,14 +16,12 @@ abstract class BaseFactFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(getLayoutId(), container, false)
+        return createBinding(inflater, container)
     }
 
-    protected abstract fun getLayoutId(): Int
-
-    protected fun setUpListeners(button: MaterialButton, view: View) {
+    protected fun setUpListeners(button: MaterialButton) {
         button.setOnClickListener {
-            onSearchClicked(view)
+            onSearchClicked()
         }
     }
 
@@ -42,9 +40,11 @@ abstract class BaseFactFragment : Fragment() {
         viewModel.liveData.observe(viewLifecycleOwner, nameObserver)
     }
 
+    protected abstract fun createBinding(inflater: LayoutInflater, container: ViewGroup?): View
+
     protected abstract fun displayFactText(fact: String)
 
     protected abstract fun showHideLoading()
 
-    protected abstract fun onSearchClicked(view: View)
+    protected abstract fun onSearchClicked()
 }

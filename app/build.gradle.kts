@@ -3,7 +3,6 @@ plugins {
     id(BuildPlugins.androidKotlinPlugin)
     kotlin(BuildPlugins.kapt)
     id(BuildPlugins.hiltAndroidPlugin)
-    id(BuildPlugins.kotlinAndroidExtensions)
 }
 
 android {
@@ -39,6 +38,10 @@ android {
         getByName("main") {
             java.srcDir("src/main/kotlin")
         }
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 

@@ -1,12 +1,14 @@
 package za.co.absa.absatask.ui.date
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_date.*
 import za.co.absa.absatask.R
+import za.co.absa.absatask.databinding.FragmentDateBinding
 import za.co.absa.absatask.ui.base.BaseFactFragment
 import java.util.*
 
@@ -14,6 +16,7 @@ import java.util.*
 class DateFragment : BaseFactFragment() {
 
     private val viewModel: DateViewModel by viewModels()
+    private lateinit var binding: FragmentDateBinding
     private var day = 1
     private var month = 1
     private val datePicker by lazy {
@@ -27,12 +30,12 @@ class DateFragment : BaseFactFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpObservers(viewModel = viewModel)
-        setUpListeners(button = btnSearch, view = view)
+        setUpListeners(button = binding.btnSearch)
         addDateListeners()
     }
 
     private fun addDateListeners() {
-        btnChooseDateMonth.setOnClickListener {
+        binding.btnChooseDateMonth.setOnClickListener {
             showDayMonthChooser()
         }
         datePicker.addOnPositiveButtonClickListener {
@@ -40,7 +43,7 @@ class DateFragment : BaseFactFragment() {
                 calendar.time = Date(it)
                 month = calendar.get(Calendar.MONTH) + 1
                 day = calendar.get(Calendar.DAY_OF_MONTH)
-                tvDate.text =
+                binding.tvDate.text =
                     getString(
                         R.string.month_day_values,
                         month.properDateDisplay(),
@@ -57,14 +60,17 @@ class DateFragment : BaseFactFragment() {
         )
     }
 
-    override fun getLayoutId() = R.layout.fragment_date
+    override fun createBinding(inflater: LayoutInflater, container: ViewGroup?): View {
+        binding = FragmentDateBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-    override fun onSearchClicked(view: View) {
+    override fun onSearchClicked() {
         viewModel.getDateFact(month = month.toString(), day = day.toString())
     }
 
     override fun displayFactText(fact: String) {
-        tvSearchResult.text = fact
+        binding.tvSearchResult.text = fact
     }
 
     override fun showHideLoading() {
