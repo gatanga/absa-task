@@ -11,10 +11,6 @@ class TriviaViewModel @javax.inject.Inject constructor(
     private val getTriviaFactUseCase: GetTriviaFactUseCase,
 ) : BaseViewModel<DataState<Any>>() {
 
-    override fun onStartObserve() {
-        //Initialize stuff here. Currently none
-    }
-
     fun getTriviaFact(number: String) {
         doAsync {
             runBlocking {

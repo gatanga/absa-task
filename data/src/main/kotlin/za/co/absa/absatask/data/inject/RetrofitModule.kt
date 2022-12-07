@@ -14,8 +14,6 @@ import za.co.absa.absatask.data.R
 import za.co.absa.absatask.data.network.rest.RetrofitService
 import javax.inject.Singleton
 
-private val json = Json { ignoreUnknownKeys = true }
-
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
