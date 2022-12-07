@@ -9,6 +9,10 @@ The app should allow the user to get a fact on a random number as well as have t
     Use of constraint layouts
     Follow the MVVM pattern
 
+## APK
+
+Grab one from here (https://github.com/gatanga/absa-task/blob/main/app/build/outputs/apk/debug/app-debug.apk) or just build
+
 ## Features in the app
 
 * On the Trivia page:
